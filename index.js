@@ -20,8 +20,8 @@ class Data {
 
 Datas = [];
 
-async function Create(data) {
-    const promise = await new Promise((resolve, reject) => {
+function Create(data) {
+    const promise = new Promise((resolve, reject) => {
         try {
             Datas.push(data);
             resolve(data.getId());
@@ -35,8 +35,8 @@ async function Create(data) {
     });
 }
 
-async function Read(_id) {
-    const promise = await new Promise((resolve, reject) => {
+function Read(_id) {
+    const promise = new Promise((resolve, reject) => {
         let isFound = false;
         Datas.forEach((elm) => {
             if (elm.getId() == _id) {
@@ -53,8 +53,8 @@ async function Read(_id) {
     });
 }
 
-async function Update(_id, data) {
-    const promise = await new Promise((resolve, reject) => {
+function Update(_id, data) {
+    const promise = new Promise((resolve, reject) => {
         try {
             let isFound = false;
             Datas.forEach((elm, index) => {
@@ -79,8 +79,8 @@ async function Update(_id, data) {
     });
 }
 
-async function Delete(_id) {
-    const promise = await new Promise((resolve, reject) => {
+function Delete(_id) {
+    const promise = new Promise((resolve, reject) => {
         let isFound = false;
         Datas.forEach((elm, index) => {
             if (elm.getId() == _id) {
@@ -102,19 +102,19 @@ async function Delete(_id) {
 async function crud() {
     console.log('*****');
     await Create(new Data(0, "$1,714.03", 39, "Stella Fitzpatrick"));
-    
+
     console.log('*****');
     await Read(Datas[0].getId());
-    
+
     console.log('*****');
     await Update(Datas[0].getId(), new Data(3746, "$1,714.6465", 40, "Stella Fitzpatrick updated"));
-    
+
     console.log('*****');
     await Read(Datas[0].getId());
-    
+
     console.log('*****');
     await Delete(Datas[0].getId());
-    
+
     console.log('*****');
     console.log(Datas);
 }
